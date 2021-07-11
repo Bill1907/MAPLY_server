@@ -1,3 +1,3 @@
 module.exports = async (req, res) => {
-    res.json("modify playlist")
+    res.json(`${req.params.userId} modify playlist`)
 }

@@ -1,3 +1,3 @@
 module.exports = async (req, res) => {
-    res.json("delete playlist")
+    res.json(`${req.params.userId} delete playlist`)
 }
