@@ -1,6 +1,7 @@
 CREATE TABLE users (
   id INT AUTO_INCREMENT,
   username varchar(255),
+  email varchar(255),
   social varchar(255),
   token varchar(255),
   PRIMARY KEY (id)

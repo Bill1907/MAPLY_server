@@ -13,7 +13,7 @@ module.exports = {
       });
     },
     post: (userId, callback) => {
-      // TODO: 해당 유저의 주문 요청을 데이터베이스에 생성하는 함수를 작성하세요
+      // 
       const queryString = ``;
       const params = [userId];
 
@@ -49,9 +49,10 @@ module.exports = {
         callback(error, result);
       });
     },
-    post: (callback) => {
+    post: (user, callback) => {
         // create user infomation
-        const queryString = `SELECT * FROM items`;
+        const { nickname, email, social } = user;
+        const queryString = `INSERT INTO maply.users (username, email, social) VALUES ('${nickname}', '${email}', '${social}')`;
   
         db.query(queryString, (error, result) => {
           callback(error, result);
