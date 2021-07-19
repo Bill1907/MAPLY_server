@@ -11,17 +11,17 @@ CREATE TABLE playlist (
   id INT AUTO_INCREMENT,
   user_id INT,
   name varchar(225),
-  content_id INT,
   created_at datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
 );
 
 CREATE TABLE content (
   id INT AUTO_INCREMENT,
+  playlist_id INT,
   content_repo varchar(225),
   PRIMARY KEY (id)
 );
 
 ALTER TABLE playlist ADD FOREIGN KEY (user_id) REFERENCES users (id);
 
-ALTER TABLE playlist ADD FOREIGN KEY (content_id) REFERENCES content (id);
+ALTER TABLE playlist ADD FOREIGN KEY (playlist_id) REFERENCES playlist (id);

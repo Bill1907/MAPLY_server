@@ -14,32 +14,32 @@ module.exports = {
         callback(error, result);
       });
     },
-    post: (userId, callback) => {
+    post: (playlist, callback) => {
       // UserId에 맞는 플레이 리스트 만들기
-      const queryString = `INSERT INTO playlist (name, , social) VALUES ('${nickname}', '${email}', '${social}')`;
-      const params = [userId];
+      // playlist는 객체로 받음.
+      const queryString = `INSERT INTO playlist (user_id, name, content_id) VALUES ('${nickname}', '${email}', '${social}')`;
+
+      db.query(queryString, (error, result) => {
+        callback(error, result);
+      });
+    },
+    delete: (playlistId, callback) => {
+      // 플레이 리스트를 삭제시
+      const queryString = `DELETE FROM playlist WHERE (id = ?)`;
+      const params = [playlistId];
 
       db.query(queryString, params, (error, result) => {
         callback(error, null);
       });
     },
-    delete: (playlistId, callback) => {
-        // 플레이 리스트를 삭제시
-        const queryString = ``;
-        const params = [playlistId];
-  
-        db.query(queryString, params, (error, result) => {
-          callback(error, null);
-        });
-      },
     patch: (playlistId, callback) => {
-    // 플레이 리스트 안에서 정보를 추가하거나 삭제시(플레이 리스트 수정)
-    const queryString = ``;
-    const params = [playlistId];
+      // 플레이 리스트 안에서 정보를 추가하거나 삭제시(플레이 리스트 수정)
+      const queryString = ``;
+      const params = [playlistId];
 
-    db.query(queryString, params, (error, result) => {
-        callback(error, null);
-    });
+      db.query(queryString, params, (error, result) => {
+          callback(error, null);
+      });
     },
   },
   content:{
