@@ -3,8 +3,10 @@ const db = require("../db");
 module.exports = {
   playlist: {
     get: (userId, callback) => {
-      // TODO: 해당 유저가 작성한 모든 주문을 가져오는 함수를 작성하세요
-      const queryString = `SELECT * FROM MAPLY.playlist`;
+      // UserId에 맞는 플레이 리스트 정보 가져오기
+      const queryString = `SELECT * FROM content 
+      INNER JOIN playlist ON (content.id = playlist.content_id) 
+      WHERE (playlist.user_id = ?)`;
 
       const params = [userId];
 
@@ -13,32 +15,46 @@ module.exports = {
       });
     },
     post: (userId, callback) => {
-      // 
-      const queryString = ``;
+      // UserId에 맞는 플레이 리스트 만들기
+      const queryString = `INSERT INTO playlist (name, , social) VALUES ('${nickname}', '${email}', '${social}')`;
       const params = [userId];
 
       db.query(queryString, params, (error, result) => {
         callback(error, null);
       });
     },
-    delete: (userId, callback) => {
-        // TODO: 해당 유저의 주문 요청을 데이터베이스에 생성하는 함수를 작성하세요
+    delete: (playlistId, callback) => {
+        // 플레이 리스트를 삭제시
         const queryString = ``;
-        const params = [userId];
+        const params = [playlistId];
   
         db.query(queryString, params, (error, result) => {
           callback(error, null);
         });
       },
-    patch: (userId, callback) => {
-    // TODO: 해당 유저의 주문 요청을 데이터베이스에 생성하는 함수를 작성하세요
+    patch: (playlistId, callback) => {
+    // 플레이 리스트 안에서 정보를 추가하거나 삭제시(플레이 리스트 수정)
     const queryString = ``;
-    const params = [userId];
+    const params = [playlistId];
 
     db.query(queryString, params, (error, result) => {
         callback(error, null);
     });
     },
+  },
+  content:{
+    get : () => {
+
+    },
+    post : () => {
+
+    },
+    delete: () => {
+
+    },
+    patch: () => {
+
+    }
   },
   users: {
     get: (callback) => {
@@ -50,13 +66,13 @@ module.exports = {
       });
     },
     post: (user, callback) => {
-        // create user infomation
-        const { nickname, email, social } = user;
-        const queryString = `INSERT INTO maply.users (username, email, social) VALUES ('${nickname}', '${email}', '${social}')`;
-  
-        db.query(queryString, (error, result) => {
-          callback(error, result);
-        });
-      },
+      // create user infomation
+      const { nickname, email, social } = user;
+      const queryString = `INSERT INTO maply.users (username, email, social) VALUES ('${nickname}', '${email}', '${social}')`;
+
+      db.query(queryString, (error, result) => {
+        callback(error, result);
+      });
+    },
   },
 };

@@ -10,6 +10,7 @@ CREATE TABLE users (
 CREATE TABLE playlist (
   id INT AUTO_INCREMENT,
   user_id INT,
+  name varchar(225),
   content_id INT,
   created_at datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (id)
