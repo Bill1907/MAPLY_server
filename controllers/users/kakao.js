@@ -36,6 +36,8 @@ module.exports = async (req, res) => {
             };
 
             console.log(userData);
+            //데이터 베이스에 사용자 있는지 확인 후
+
             // 데이터베이스에 사용자 정보 저장.
             models.users.post(userData, (error, result) => {
                 if(!error){
@@ -48,7 +50,7 @@ module.exports = async (req, res) => {
             })
         // .catch(err => console.log({err}))
     } catch (error){
-        res.send(error);
+        res.status(400).send(error);
     }
     
 }
