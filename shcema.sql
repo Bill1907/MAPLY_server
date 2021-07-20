@@ -18,10 +18,12 @@ CREATE TABLE playlist (
 CREATE TABLE content (
   id INT AUTO_INCREMENT,
   playlist_id INT,
-  content_repo varchar(225),
+  video_id varchar(225),
+  title varchar(225),
+  thumbnail varchar(225),
   PRIMARY KEY (id)
 );
 
 ALTER TABLE playlist ADD FOREIGN KEY (user_id) REFERENCES users (id);
 
-ALTER TABLE playlist ADD FOREIGN KEY (playlist_id) REFERENCES playlist (id);
+ALTER TABLE content ADD FOREIGN KEY (playlist_id) REFERENCES playlist (id);

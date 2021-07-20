@@ -17,7 +17,8 @@ module.exports = {
     post: (playlist, callback) => {
       // UserId에 맞는 플레이 리스트 만들기
       // playlist는 객체로 받음.
-      const queryString = `INSERT INTO playlist (user_id, name, content_id) VALUES ('${nickname}', '${email}', '${social}')`;
+      const queryString = `INSERT INTO playlist (user_id, name, content_id) 
+      VALUES ('${nickname}', '${email}', '${social}')`;
 
       db.query(queryString, (error, result) => {
         callback(error, result);
@@ -44,16 +45,12 @@ module.exports = {
   },
   content:{
     get : () => {
-
     },
     post : () => {
-
     },
     delete: () => {
-
     },
     patch: () => {
-
     }
   },
   users: {
