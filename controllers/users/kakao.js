@@ -44,10 +44,7 @@ module.exports = async (req, res) => {
                     console.log(error);
                 }
             });
-            res.cookie('accessToken', accessToken, {
-                httpOnly: true
-            });
-            res.send({ message: "success" });
+            res.send({ accessToken });
             })
         // .catch(err => console.log({err}))
     } catch (error){
