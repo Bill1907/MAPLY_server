@@ -40,7 +40,7 @@ module.exports = async (req, res) => {
           social: "kakao",
         };
 
-        console.log(userData);
+        // console.log(userData);
         //데이터 베이스에 사용자 있는지 확인 후
 
         // 데이터베이스에 사용자 정보 저장.
