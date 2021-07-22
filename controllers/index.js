@@ -1,6 +1,4 @@
 module.exports = {
-    githubLogin: require('./users/github'),
-    googleLogin: require('./users/google'),
     kakaoLogin: require('./users/kakao'),
     logout: require('./users/logout'),
     getPlaylist: require('./playlist/getPlaylist'),
