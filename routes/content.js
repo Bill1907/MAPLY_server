@@ -3,8 +3,10 @@ const router = express.Router();
 
 const { createContent, deleteContent } = require('../controllers');
 
-router.post('', createContent);
+//POST  /content
+router.post('/', createContent);
 
-router.delete('', deleteContent);
+//DELETE /content/:playlist_id
+router.delete('/:playlist_id', deleteContent);
 
 module.exports = router;
