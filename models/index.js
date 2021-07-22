@@ -1,6 +1,7 @@
 const db = require("../db");
 
 module.exports = {
+  
   playlist: {
     get: (userId, callback) => {
       // UserId에 맞는 플레이 리스트 정보 가져오기
@@ -17,8 +18,8 @@ module.exports = {
     post: (playlist, callback) => {
       // UserId에 맞는 플레이 리스트 만들기
       // playlist는 객체로 받음.
-      const queryString = `INSERT INTO playlist (user_id, name, content_id) 
-      VALUES ('${nickname}', '${email}', '${social}')`;
+      const { user_id, name } = playlist;
+      const queryString = `INSERT INTO playlist (user_id, name) VALUES ('${user_id}', '${name}')`;
 
       db.query(queryString, (error, result) => {
         callback(error, result);
@@ -43,16 +44,30 @@ module.exports = {
       });
     },
   },
+  
   content:{
     get : () => {
     },
-    post : () => {
+    post : (content, callback) => {
+      const { playlist_id, video_id, title, thumbnail } = content;
+      const queryString = `INSERT INTO content (playlist_id, video_id, title, thumbnail) 
+      VALUES ('${playlist_id}', '${video_id}', '${title}', '${thumbnail}')`;
+
+      db.query(queryString, params, (error, result) => {
+          callback(error, result);
+      });
     },
-    delete: () => {
+    delete: (content_id, callback) => {
+      const queryString = `DELETE FROM content WHERE id=${content_id}`;
+      
+      db.query(queryString, params, (error, result) => {
+        callback(error, result);
+      });
     },
     patch: () => {
     }
   },
+  
   users: {
     get: (callback) => {
       // get user infomation 

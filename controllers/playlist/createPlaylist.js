@@ -1,6 +1,12 @@
 const models = require('../../models');
 
 module.exports = async (req, res) => {
-    
-    res.json(`${req.params.userId} create playlist`)
+    const playlist = req.body;
+    models.playlist.post(playlist,( error, result ) => {
+        if(!error){
+            res.json('created playlist');
+        } else { 
+            res.status(404).send(error)
+        }
+    });
 }
