@@ -24,6 +24,6 @@ CREATE TABLE content (
   PRIMARY KEY (id)
 );
 
-ALTER TABLE playlist ADD FOREIGN KEY (user_id) REFERENCES users (id);
+ALTER TABLE playlist ADD FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE;
 
-ALTER TABLE content ADD FOREIGN KEY (playlist_id) REFERENCES playlist (id);
+ALTER TABLE content ADD FOREIGN KEY (playlist_id) REFERENCES playlist (id) ON DELETE CASCADE;

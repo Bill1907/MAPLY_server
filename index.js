@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser')
 const app = express();
 const userRouter = require('./routes/user');
 const playlistRouter = require('./routes/playlist');
+const contentRouter = require('./routes/content');
 
 require('dotenv').config()
 const port = process.env.PORT || 4000
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
 
 app.use('/user', userRouter);
 app.use('/playlist', playlistRouter);
+app.use('/content', contentRouter);
 
 app.listen(port, () => {
   console.log(`Port Number is ${port}`)

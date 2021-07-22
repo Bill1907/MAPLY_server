@@ -6,7 +6,7 @@ module.exports = {
     get: (userId, callback) => {
       // UserId에 맞는 플레이 리스트 정보 가져오기
       const queryString = `SELECT * FROM content 
-      INNER JOIN playlist ON (content.id = playlist.content_id) 
+      INNER JOIN playlist ON (content.playlist_id = playlist.id) 
       WHERE (playlist.user_id = ?)`;
 
       const params = [userId];
@@ -31,7 +31,7 @@ module.exports = {
       const params = [playlistId];
 
       db.query(queryString, params, (error, result) => {
-        callback(error, null);
+        callback(error, result);
       });
     },
     patch: (playlistId, callback) => {

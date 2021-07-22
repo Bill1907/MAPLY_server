@@ -5,6 +5,7 @@ module.exports = {
     logout: require('./users/logout'),
     getPlaylist: require('./playlist/getPlaylist'),
     createPlaylist: require('./playlist/createPlaylist'),
-    modifyPlaylist: require('./playlist/modifyPlaylist'),
-    deletePlaylist: require('./playlist/deletePlaylist')
+    deletePlaylist: require('./playlist/deletePlaylist'),
+    createContent: require('./content/createContent'),
+    deleteContent: require('./content/deleteContent')
 }
