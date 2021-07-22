@@ -8,5 +8,5 @@ module.exports = async (req, res) => {
         } else {
             res.status(404).send(error)
         }
-    })
+    });
 }
