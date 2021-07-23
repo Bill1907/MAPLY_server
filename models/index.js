@@ -19,7 +19,8 @@ module.exports = {
       // UserId에 맞는 플레이 리스트 만들기
       // playlist는 객체로 받음.
       const { user_id, name } = playlist;
-      const queryString = `INSERT INTO playlist (user_id, name) VALUES ('${user_id}', '${name}')`;
+      const queryString = `INSERT INTO playlist (user_id, name) VALUES ('${user_id}', '${name}');
+      SELECT * FROM playlist WHERE (user_id=${user_id})`;
 
       db.query(queryString, (error, result) => {
         callback(error, result);
@@ -32,15 +33,6 @@ module.exports = {
 
       db.query(queryString, params, (error, result) => {
         callback(error, result);
-      });
-    },
-    patch: (playlistId, callback) => {
-      // 플레이 리스트 안에서 정보를 추가하거나 삭제시(플레이 리스트 수정)
-      const queryString = ``;
-      const params = [playlistId];
-
-      db.query(queryString, params, (error, result) => {
-          callback(error, null);
       });
     },
   },
@@ -72,7 +64,7 @@ module.exports = {
     get: (userData, callback) => {
       // get user infomation 
       const { nickname, email, social } = userData;
-      const queryString = `SELECT * FROM users WHERE (username = '${nickname}' AND email = '${email}' AND social = '${social}')`;
+      const queryString = `SELECT * FROM users WHERE (username='${nickname}' AND email='${email}' AND social='${social}')`;
 
       db.query(queryString, (error, result) => {
         callback(error, result);
@@ -81,7 +73,8 @@ module.exports = {
     post: (user, callback) => {
       // create user infomation
       const { nickname, email, social } = user;
-      const queryString = `INSERT INTO maply.users (username, email, social) VALUES ('${nickname}', '${email}', '${social}')`;
+      const queryString = `INSERT INTO users (username, email, social) VALUES ('${nickname}', '${email}', '${social}');
+      SELECT * FROM users WHERE (username='${nickname}' AND email='${email}' AND social='${social}')`;
 
       db.query(queryString, (error, result) => {
         callback(error, result);
