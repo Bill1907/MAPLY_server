@@ -20,7 +20,7 @@ CREATE TABLE content (
   playlist_id INT,
   video_id varchar(225),
   title varchar(225),
-  thumbnail varchar(225),
+  thumbnail TEXT,
   PRIMARY KEY (id)
 );
 

@@ -57,7 +57,7 @@ module.exports = async (req, res) => {
           } else {
             console.log(error);
           }
-        })
+        });
         res.send(result);
       });
     // .catch(err => console.log({err}))
