@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
           },
         });
         const { nickname } = userinfo.data.kakao_account.profile;
-        const { email } = userinfo.data.kakao_account;
+        const email = userinfo.data.kakao_account.email || " ";
         const userData = {
           nickname,
           email,
@@ -42,9 +42,9 @@ module.exports = async (req, res) => {
         // get을 사용해서 유저가 있으면 유저 정보가 있으면 리절트를 리턴해주고 없으면 post로 가서 만들어서 리턴해준다. 
         models.users.get(userData, (error, result) => {
           if (!error) {
-            if (!result){
+            if (result.length === 0){
               models.users.post(userData, (error, result2) => {
-                if (!error){
+                if (!error) {
                   res.send(result2);
                 } else {
                   res.status(404).send('좋은 노래 추천해주면 로그인 시켜드림');

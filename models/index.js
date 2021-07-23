@@ -74,7 +74,7 @@ module.exports = {
       // create user infomation
       const { nickname, email, social } = user;
       const queryString = `INSERT INTO users (username, email, social) VALUES ('${nickname}', '${email}', '${social}');
-      SELECT * FROM users WHERE (username='${nickname}' AND email='${email}' AND social='${social}')`;
+      SELECT * FROM users WHERE (username='${nickname}' AND email='${email}' AND social='${social}');`;
 
       db.query(queryString, (error, result) => {
         callback(error, result);
