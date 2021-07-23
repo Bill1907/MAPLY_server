@@ -69,9 +69,10 @@ module.exports = {
   },
   
   users: {
-    get: (callback) => {
+    get: (userData, callback) => {
       // get user infomation 
-      const queryString = `SELECT * FROM users`;
+      const { nickname, email, social } = userData;
+      const queryString = `SELECT * FROM users WHERE (username = '${nickname}' AND email = '${email}' AND social = '${social}')`;
 
       db.query(queryString, (error, result) => {
         callback(error, result);

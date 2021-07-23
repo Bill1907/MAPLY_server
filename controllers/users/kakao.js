@@ -51,7 +51,14 @@ module.exports = async (req, res) => {
             console.log(error);
           }
         });
-        res.send({ userData });
+        const result = models.users.get(userData, (error, result) => {
+          if (!error) {
+            console.log(result);
+          } else {
+            console.log(error);
+          }
+        })
+        res.send(result);
       });
     // .catch(err => console.log({err}))
   } catch (error) {
